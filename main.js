@@ -112,6 +112,14 @@ function handleEnter (e) { // on every key press
                 });
                 snack("History cleared.");
             }
+        } else if (input == "help" || input == "?") {
+            alert(`
+            JackBar commands:
+            ping (url) :: Pings an IP or an address
+            roblox (username) :: Shows the avatar of that user
+            embed (url) :: Embeds the url
+            r/(subreddit) :: Redirects you to the subreddit
+          `)  
         } else { // if the command doesn't exist
             clearTimeout(stop); // remove the timeout from the end so it doesn't end early
             document.getElementById("command").classList.add("apply-shake"); // add the red
