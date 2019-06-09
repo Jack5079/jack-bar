@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- tell the browser that the page is encoded in utf-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- responsive tag-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- forces ie and internet explorer to use the latest standards -->
+    <title>JackBar</title> <!-- the title duh-->
+    <link rel="stylesheet" href="style.css"> <!-- the css is in style.css -->
+</head>
+
+<body onkeypress="handleEnter(event)">
+    <!-- runs handleEnter every keypress (main js function) -->
+    <noscript>JackBar needs JavaScript to function</noscript> <!-- alert users that we need js, if it's not there -->
+    <span class="con"><input type="text" id="command" autofocus placeholder="Type a command...">
+        <!-- main input that the user uses; autofocus means it lets people type upon loading the page -->
+    </span>
+    <script src="ping.js"></script> <!-- the ping js (I DIDN'T MAKE IT!) -->
+    <script src="main.js"></script> <!-- the js is in main.js -->
+    <span id="snackbar">JackBar needs CSS to function</span> <!-- everything breaks when css is gone so yeah also this is the nice snackbar -->
+</body>
+
+</html>
