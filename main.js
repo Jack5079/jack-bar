@@ -47,6 +47,8 @@ if (localStorage.getItem("history")) { // if it's saved
         loading.innerHTML = element; // Change it's html to the element
         document.body.appendChild(loading); // Add it to the page
     });
+} else {
+    localStorage.setItem("history", JSON.stringify(list));
 }
 function handleEnter (e) { // on every key press
     var keycode = (e.keyCode ? e.keyCode : e.which); // keycode is the code for what they pressed
@@ -93,7 +95,11 @@ function handleEnter (e) { // on every key press
             localStorage.setItem("history", JSON.stringify(list)); // save
         } else if (input.startsWith("history")) { // if they ask for their command history
             if (input == "history") {
-                copyTextToClipboard(localStorage.getItem("history"));
+                if (localStorage.getItem("history") != "null") {
+                    copyTextToClipboard(localStorage.getItem("history"));
+                } else {
+                    copyTextToClipboard("[]");
+                }
                 snack("History copied to clipboard!");
             }
             if (input == "history clear") {
