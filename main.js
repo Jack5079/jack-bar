@@ -95,7 +95,7 @@ function handleEnter (e) { // on every key press
             localStorage.setItem("history", JSON.stringify(list)); // save
         } else if (input.startsWith("history")) { // if they ask for their command history
             if (input == "history") {
-                if (localStorage.getItem("history") != "null") {
+                if (localStorage.getItem("history")) {
                     copyTextToClipboard(localStorage.getItem("history"));
                 } else {
                     copyTextToClipboard("[]");
