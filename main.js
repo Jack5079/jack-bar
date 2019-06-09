@@ -74,11 +74,11 @@ function handleEnter (e) { // on every key press
             document.body.appendChild(time); // Add it to the body
             ping("//" + input.replace("ping ", "").replace("^https?:\/\/(.*)", "")).then(function (delta) { // Actually ping and remove the http/https and replace that with //
                 time.innerText = "Pinged " + input.replace("ping ", "") + "\nTook " + String(delta) + " ms"; // Once it's pinged, replace the text with "Pinged example.com\nTook 2 ms"
+                list.push(time.outerHTML);
+                localStorage.setItem("history", JSON.stringify(list));
             }).catch(function (err) { // if it errors
                 console.error('Could not ping remote URL', err); // log that shit
             });
-            list.push(time.outerHTML);
-            localStorage.setItem("history", JSON.stringify(list));
         } else if (input.startsWith("r/") && input.length > 2) { // if they used r/
             window.location.href = "https://reddit.com/" + input.replace(" ", "_"); // go to the subreddit
         } else if (input.startsWith("embed") && input.length > 6) { // if they used embed
