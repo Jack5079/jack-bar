@@ -93,7 +93,7 @@ function handleEnter (e) { // on every key press
             document.body.appendChild(ele); // add it to the page
             list.push(ele.outerHTML); // add to the history
             localStorage.setItem("history", JSON.stringify(list)); // save
-        } else if (input.startsWith("history")) { // if they ask for their command history
+        } else if (input == "history" || input == "history clear" ) { // if they ask for their command history
             if (input == "history") {
                 if (localStorage.getItem("history")) {
                     copyTextToClipboard(localStorage.getItem("history"));
@@ -104,6 +104,7 @@ function handleEnter (e) { // on every key press
             }
             if (input == "history clear") {
                 localStorage.clear();
+                args = [];
                 Array.from(document.getElementsByTagName("div")).forEach(element => {
                     element.remove();
                 });
