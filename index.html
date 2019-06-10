@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8"> <!-- tell the browser that the page is encoded in utf-8 -->
+    <meta name="description" content="a funny little command thing">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- responsive tag-->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- forces ie and internet explorer to use the latest standards -->
@@ -14,7 +15,7 @@
 <body onkeypress="handleEnter(event)">
     <!-- runs handleEnter every keypress (main js function) -->
     <noscript>JackBar needs JavaScript to function</noscript> <!-- alert users that we need js, if it's not there -->
-    <span class="con"><input type="text" id="command" autofocus placeholder="Type a command...">
+    <span class="con"><input type="text" id="command" autofocus placeholder="Type a command..." aria-label="Command Bar">
         <!-- main input that the user uses; autofocus means it lets people type upon loading the page -->
     </span>
     <script src="ping.js"></script> <!-- the ping js (I DIDN'T MAKE IT!) -->
