@@ -104,7 +104,7 @@ function handleEnter (e) { // on every key press
             }
             if (input == "history clear") {
                 localStorage.clear();
-                args = [];
+                list = [];
                 Array.from(document.getElementsByTagName("div")).forEach(element => {
                     element.remove();
                 });
