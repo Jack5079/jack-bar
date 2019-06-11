@@ -26,7 +26,7 @@ input:focus::placeholder {
 input::placeholder {
   text-align: center;
   transition: opacity 1s;
-     opacity: 0.5; /*Change the opacity between 0 and 1*/
+     opacity: 1; /*Change the opacity between 0 and 1*/
 }
 input {
   margin-top: 5vh;
@@ -34,12 +34,13 @@ input {
   margin-bottom: 5vh;
   outline: 0;
     border-radius: 25px;
-    background-color:rgba(34, 34, 34, 0.7);
+    background-color:rgba(34, 34, 34, 0.9);
     font-family: 'Roboto Mono', monospace;
     font-size: 2.5vw;
     transition: all 1s;
 }
 input:focus {
+  margin-top: 50vh;
   border-radius: 0;
     font-size: 5vw;
     background-color: white;
