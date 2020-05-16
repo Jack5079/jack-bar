@@ -1,4 +1,5 @@
 /* global ping, localStorage */
+// Hello, 2020 Jack here. This is the worst code I have ever written. I have no idea how it worked when I made it.
 // clipboard code i think from stack overflow
 function fallbackCopyTextToClipboard (text) {
   var textArea = document.createElement('textarea')
@@ -67,8 +68,9 @@ function handleEnter (e) { // on every key press
       roblox.appendChild(name) // add the name to the base
       document.body.appendChild(roblox) // add the base (including this other stuff) to the body
       list.push(roblox.outerHTML)
-      localStorage.setItem('history', JSON.stringify(list))
-    } else if (input.startsWith('ping ') && input.length > 5) { // if they used ping
+      return localStorage.setItem('history', JSON.stringify(list))
+    } 
+    if (input.startsWith('ping ') && input.length > 5) { // if they used ping
       var time = document.createElement('div') // Make the ping element
       time.style.textAlign = 'center'
       time.innerText = 'Pinging ' + input.replace('ping ', '') + '...' // say "Pinging example.com..."
@@ -76,13 +78,15 @@ function handleEnter (e) { // on every key press
       ping('//' + input.replace('ping ', '').replace('^https?:\/\/(.*)', '')).then(function (delta) { // Actually ping and remove the http/https and replace that with //
         time.innerText = 'Pinged ' + input.replace('ping ', '') + '\nTook ' + String(delta) + ' ms' // Once it's pinged, replace the text with "Pinged example.com\nTook 2 ms"
         list.push(time.outerHTML)
-        localStorage.setItem('history', JSON.stringify(list))
+        return localStorage.setItem('history', JSON.stringify(list))
       }).catch(function (err) { // if it errors
         console.error('Could not ping remote URL', err) // log that shit
       })
-    } else if (input.startsWith('r/') && input.length > 2) { // if they used r/
-      window.location.href = 'https://reddit.com/' + input.replace(' ', '_') // go to the subreddit
-    } else if (input.startsWith('embed') && input.length > 6) { // if they used embed
+    } 
+    if (input.startsWith('r/') && input.length > 2) { // if they used r/
+      return window.location.href = 'https://reddit.com/' + input.replace(' ', '_') // go to the subreddit
+    } 
+    if (input.startsWith('embed') && input.length > 6) { // if they used embed
       var ele = document.createElement('iframe') // make an iframe
       if (input.replace('embed ', '').startsWith('https://')) { // if they put https
         ele.src = input.replace('embed ', '') //  set the link to it
@@ -93,8 +97,9 @@ function handleEnter (e) { // on every key press
       ele.height = '0' // same
       document.body.appendChild(ele) // add it to the page
       list.push(ele.outerHTML) // add to the history
-      localStorage.setItem('history', JSON.stringify(list)) // save
-    } else if (input === 'history' || input === 'history clear') { // if they ask for their command history
+      returnn localStorage.setItem('history', JSON.stringify(list)) // save
+    } 
+    if (input === 'history' || input === 'history clear') { // if they ask for their command history
       if (input === 'history') {
         if (localStorage.getItem('history')) {
           copyTextToClipboard(localStorage.getItem('history'))
@@ -112,9 +117,10 @@ function handleEnter (e) { // on every key press
         Array.from(document.getElementsByTagName('iframe')).forEach(element => {
           element.remove()
         })
-        snack('History cleared.')
+        return snack('History cleared.')
       }
-    } else if (input === 'help' || input === '?') {
+    } 
+    if (input === 'help' || input === '?') {
       window.alert(`
             JackBar commands:
             ping (url) :: Pings an IP or an address
