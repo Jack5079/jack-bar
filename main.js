@@ -83,14 +83,14 @@ function handleEnter (e) { // on every key press
         console.error('Could not ping remote URL', err) // log that shit
       })
     } 
-    if (input.startsWith('r/') && input.length > 2) { // if they used r/
+    if (input.startsWith('r/') && input.length > 2) { // hole some 100
       return window.location.href = 'https://reddit.com/' + input.replace(' ', '_') // go to the subreddit
     } 
-    if (input.startsWith('embed') && input.length > 6) { // if they used embed
+    if (input.startsWith('embed') && input.length > 6) { // display a website
       var ele = document.createElement('iframe') // make an iframe
       if (input.replace('embed ', '').startsWith('https://')) { // if they put https
         ele.src = input.replace('embed ', '') //  set the link to it
-      } else { // if they forgot
+      } else { // no https
         ele.src = 'https://' + input.replace('embed ', '') // add it for them
       }
       ele.width = '0' // set the width to zero (there's an animation in the css)
@@ -99,7 +99,7 @@ function handleEnter (e) { // on every key press
       list.push(ele.outerHTML) // add to the history
       returnn localStorage.setItem('history', JSON.stringify(list)) // save
     } 
-    if (input === 'history' || input === 'history clear') { // if they ask for their command history
+    if (input === 'history' || input === 'history clear') { // get the command history
       if (input === 'history') {
         if (localStorage.getItem('history')) {
           copyTextToClipboard(localStorage.getItem('history'))
@@ -128,7 +128,7 @@ function handleEnter (e) { // on every key press
             embed (url) :: Embeds the url
             r/(subreddit) :: Redirects you to the subreddit
           `)
-    } else { // if the command doesn't exist
+    } else { // 404
       clearTimeout(stop) // remove the timeout from the end so it doesn't end early
       document.getElementById('command').classList.add('apply-shake') // add the red
       var stop = setTimeout(() => document.getElementById('command').classList.remove('apply-shake'), 830) // after 0.83 seconds, remove it
